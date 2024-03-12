@@ -1,75 +1,51 @@
-# Nuxt 3 Minimal Starter
+# Nuxt.js: LocalStorage Session Persistence
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Overview
 
-## Setup
+This repository shows in a very simple and practical example how I implemented session persistent in my Nuxt.js app [OneExercise](https://oneexercise.mstflotfy.com/) in isolation of the complexity of the app.
 
-Make sure to install the dependencies:
 
-```bash
-# npm
-npm install
+The repository provides a clear guide on implementing session persistence using localStorage in a Nuxt.js application. It demonstrates how to persist data across page reloads or app closures. Here are the key features and steps to get started:
 
-# pnpm
-pnpm install
+## Key Features
 
-# yarn
-yarn install
+- **Isolated example:** Demonstrates the use of localStorage within the application, separate from complex app code.
+- **Clear Code Examples:** Shows how to set, get, and remove data from localStorage in a Nuxt application.
 
-# bun
-bun install
-```
+## Getting Started
 
-## Development Server
+1. **Clone the Repository:**
 
-Start the development server on `http://localhost:3000`:
+   ```bash
+   git clone https://<your_github_username>/nuxt-isolated-localStorage.git
+   ```
 
-```bash
-# npm
-npm run dev
+2. **Install Dependencies:**
 
-# pnpm
-pnpm run dev
+   ```bash
+   npm install
+   ```
 
-# yarn
-yarn dev
+3. **Run the Development Server:**
 
-# bun
-bun run dev
-```
+   ```bash
+   npm run dev
+   ```
 
-## Production
+4. **Explore Code Examples:**
 
-Build the application for production:
+   Examine the `pages` directory to understand how localStorage is used for session management.
 
-```bash
-# npm
-npm run build
+## Branch Structure
 
-# pnpm
-pnpm run build
+- **main:** Contains the fundamental implementation of localStorage session management.
+- **improved:** This branch builds upon the `main` branch.
 
-# yarn
-yarn build
+## Important Considerations
 
-# bun
-bun run build
-```
+- **Suitability:**  Ideal for persisting non-critical data like user preferences or selections across sessions.
 
-Locally preview production build:
+For more details and examples, you can refer to the provided links:
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- [Client-side storage, mdn web docs](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage#storing_simple_data_%E2%80%94_web_storage)
+- [Using the Web Storage API, mdn web docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#basic_concepts)
