@@ -4,17 +4,19 @@
       <nav>
         <button @click="$router.back">Back</button>
       </nav>
-      <h1>Workout {{ workoutId }}</h1>  
+      <h1>Workout {{ workout.id }}</h1>  
     </header>
     <main>
-      <form>
+      <form aria-label="Workout Info">
         <h2>Workout Info</h2>
         <label for="name">Workout Name </label>
         <input 
           id="name" 
           type="text" 
           placeholder="Enter Workout Name"
-          v-model="workoutName"
+          v-model="workout.name"
+          aria-label="Workout Name"
+          aria-required="true"
         />
         <br>
         <br>
@@ -22,7 +24,9 @@
         <input 
           id="workoutDate" 
           type="date" 
-          v-model="workoutDate"
+          v-model="workout.date"
+          aria-label="Workout Date"
+          aria-required="true"
         />
       </form>
     </main>
@@ -30,34 +34,52 @@
 </template>
 
 <script lang="ts" setup>
+  import type { Workout } from '~/types/workout';
+
   const route = useRoute();
-  const workoutId = route.params.id
-  const workoutName = ref('')
-  const workoutDate = ref(new Date().toISOString().slice(0,10))
+  const localStorageAvailable = ref(false)
 
-
-  // Save to localStorage
-  watch([workoutName, workoutDate], ([newName, newDate], [oldName, oldDate]) => {
-        localStorage.setItem('unsavedWorkoutName', newName)
-        localStorage.setItem('unsavedWorkoutDate', newDate)
-        localStorage.setItem('unsavedId', workoutId as string)
+  const workout = ref<Workout>({
+    id: route.params.id as string,
+    name: '',
+    date: new Date().toISOString().slice(0, 10)
   })
 
+  watch(workout, (newWorkout) => {
+    if (localStorageAvailable.value) {
+      localStorage.setItem('unsavedWorkout', JSON.stringify(newWorkout))
+    }
+  }, { deep: true })
+
   onMounted(() => {
+
+    // Check if localStorage is avaialable
+    localStorageAvailable.value = (() => {
+      if (useStorageAvailable('localStorage')) {
+        return true
+      } else {
+        console.error('...')
+        return false
+      }
+    })()
+
     // Load from localStorage
-    const unsavedId = localStorage.getItem('unsavedId') ?? ''
-    const unsavedName = localStorage.getItem('unsavedWorkoutName') ?? ''
-    const unsavedDate = localStorage.getItem('unsavedWorkoutDate') ?? ''
-    if (unsavedId) {
-        if (unsavedName) workoutName.value = unsavedName
-        if (unsavedDate) workoutDate.value = unsavedDate
+    if (localStorageAvailable.value) {
+      const unsavedWorkoutString = localStorage.getItem('unsavedWorkout') 
+      if (unsavedWorkoutString) {
+        try {
+          workout.value = JSON.parse(unsavedWorkoutString)
+        } catch (e) {
+          console.error('...')
+        }
+      }
     }
   })  
 
   onBeforeRouteLeave(() => {
     // Reset localStorage
-    localStorage.removeItem('unsavedId')
-    localStorage.removeItem('unsavedWorkoutName')
-    localStorage.removeItem('unsavedWorkoutDate')
+    if (localStorageAvailable.value) {
+      localStorage.removeItem('unsavedWorkout')
+    }
   })
 </script>
