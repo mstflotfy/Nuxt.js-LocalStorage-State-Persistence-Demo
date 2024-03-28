@@ -35,6 +35,7 @@
 
 <script lang="ts" setup>
   import type { Workout } from '~/types/workout';
+  import { useStorageAvailable } from '~/composables/storageAvailable';
 
   const route = useRoute();
   const localStorageAvailable = ref(false)
