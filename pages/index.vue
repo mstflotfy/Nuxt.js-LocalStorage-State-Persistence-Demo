@@ -11,7 +11,7 @@
     const unsavedId = localStorage.getItem('unsavedId') ?? ''
 
     if (unsavedId) {
-        router.push(`/workouts/${unsavedId}`);
+      router.push(`/workouts/${unsavedId}`);
     } else {
       router.push('/workouts')
     }

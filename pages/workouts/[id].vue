@@ -35,7 +35,6 @@
   const workoutName = ref('')
   const workoutDate = ref(new Date().toISOString().slice(0,10))
 
-
   // Save to localStorage
   watch([workoutName, workoutDate], ([newName, newDate], [oldName, oldDate]) => {
         localStorage.setItem('unsavedWorkoutName', newName)
@@ -49,8 +48,8 @@
     const unsavedName = localStorage.getItem('unsavedWorkoutName') ?? ''
     const unsavedDate = localStorage.getItem('unsavedWorkoutDate') ?? ''
     if (unsavedId) {
-        if (unsavedName) workoutName.value = unsavedName
-        if (unsavedDate) workoutDate.value = unsavedDate
+        workoutName.value = unsavedName
+        workoutDate.value = unsavedDate
     }
   })  
 
