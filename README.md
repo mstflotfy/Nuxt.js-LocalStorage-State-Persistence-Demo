@@ -2,13 +2,18 @@
 
 ## Overview
 
-This repository provides a simple and practical demonstration of how to implement client-side state persistence using localStorage in a Nuxt.js application. The example is extracted from the [OneExercise](https://oneexercise.mstflotfy.com/) app, isolating the localStorage implementation from the app's complexity.
+This repository provides a simple and practical demonstration of how to implement 
+client-side state persistence using localStorage in a Nuxt.js application. 
+The example is extracted from the [OneExercise](https://oneexercise.mstflotfy.com/) app, 
+isolating the localStorage implementation from the app's complexity.
 
-The demo showcases how to persist data across page reloads or app closures using localStorage in a Nuxt.js application. Here are the key features and steps to get started:
+The demo showcases how to persist data across page reloads or app closures using localStorage in a Nuxt.js application. 
+Here are the key features and steps to get started:
 
 ## Key Features
 
-- **Isolated Example:** Demonstrates the use of localStorage for client-side state persistence, separate from complex app code.
+- **Isolated Example:** Demonstrates the use of localStorage for client-side state persistence, 
+separate from complex app code.
 - **Clear Code Examples:** Shows how to set, get, and remove data from localStorage in a Nuxt.js application.
 
 ## Getting Started
@@ -16,7 +21,7 @@ The demo showcases how to persist data across page reloads or app closures using
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://<your_github_username>/nuxt-localstorage-state-persistence-demo.git
+   git clone https://<your_github_username>/Nuxt.js-LocalStorage-State-Persistence-Demo
    ```
 
 2. **Install Dependencies:**
